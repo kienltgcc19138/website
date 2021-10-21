@@ -7,7 +7,7 @@
 		if(isset($_GET["id"]))
 		{
 			$id = $_GET["id"];
-			$result = pg_query($conn, "Select * from public.category where Cat_ID='$id'");
+			$result = pg_query($conn, "Select * from public.category where cat_id='$id'");
 			$row = pg_fetch_array($result, MYSQLI_ASSOC);
 			$cat_id = $row['Cat_ID'];
 			$cat_name = $row['Cat_Name'];
@@ -77,11 +77,11 @@
 			}
 			else
 			{
-				$sq="select * from public.category where Cat_ID != '$id' and Cat_Name='$name'";
+				$sq="select * from public.category where cat_id != '$id' and cat_name='$name'";
 				$result = pg_query($conn, $sq);
 				if(pg_num_rows($result)==0)
 				{
-					pg_query($conn, "UPDATE public.category Set Cat_Name = '$name', Cat_Des='$des' where Cat_ID='$id'");
+					pg_query($conn, "UPDATE public.category Set cat_name = '$name', cat_des='$des' where cat_id='$id'");
 					echo '<meta http-equiv="Refresh" content="0;URL=?page=category_management"/>';
 				}
 				else

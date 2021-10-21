@@ -21,11 +21,11 @@
 			echo "<ul>$err</ul>";
 		}
 		else{
-			$sq="select * from public.category where Cat_ID='$id or Cat_Name='$name'";
+			$sq="select * from public.category where cat_id='$id or cat_name='$name'";
 			$result=pg_query($conn,$sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query($conn,"Insert into public.category (Cat_ID, Cat_name, Cat_Des) values ('$id','$name','$des')");
+				pg_query($conn,"Insert into public.category (cat_id, cat_name, cat_des) values ('$id','$name','$des')");
 				echo '<script>alert("Add category successful");</script>';
 				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
 			}

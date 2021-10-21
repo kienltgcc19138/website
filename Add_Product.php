@@ -4,12 +4,12 @@
 <?php
 include_once("connection.php");
 function bind_Category_List($conn){
-	$sqlstring="select Cat_ID, Cat_Name from public.category";
+	$sqlstring="select cat_id, cat_name from public.category";
 	$result=pg_query($conn,$sqlstring);
 	echo "<select name='CategoryList' class='form-control'>
 		<option value='0'>Choose category</option>";
-		while($row= pg_fetch_array($result,MYSQLI_ASSOC)){
-			echo "<option value='".$row['Cat_ID']."'>".$row['Cat_Name']."</option>";
+		while($row= pg_fetch_array($result,NULL, PGSQL_ASSOC)){
+			echo "<option value='".$row['cat_id']."'>".$row['cat_name']."</option>";
 		} 
 		echo "</select>";
 
@@ -50,14 +50,14 @@ if(isset($_POST["btnAdd"]))
 		if($pic['type']=="image/jpg"||$pic['type']=="image/jpeg"||$pic['type']=="image/png"||$pic['type']=="image/gif"){
 		if($pic['size']<614400)
 		{
-			$sq="select * from public.product where Product_ID='$id' or Product_Name='$proname'";
-			$result=mysqli_query($conn,$sq);
-			if(mysqli_num_rows($result)==0){
+			$sq="select * from public.product where product_id='$id' or product_name='$proname'";
+			$result=pg_query($conn,$sq);
+			if(pg_num_rows($result)==0){
 				copy($pic['tmp_name'],"product-imgs/".$pic['name']);
 				$filePic=$pic['name'];
 				$sqlstring="Insert into product(
-					Product_ID, Product_Name,Price,SmallDesc,DetailDesc,ProDate,Pro_qty,Pro_image, Cat_ID) values ('$id','$proname','$price','$short','$details','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
-					mysqli_query($conn,$sqlstring) or die(mysqli_error($conn));
+					product_id, product_name,price,smalldesc,detaildesc,prodate,pro_qty,pro_image, cat_id) values ('$id','$proname','$price','$short','$details','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
+					pg_query($conn,$sqlstring) or die(pg_error($conn));
 					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 			}
 			else{

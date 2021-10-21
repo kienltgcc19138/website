@@ -10,7 +10,7 @@
                         <!--Load san pham tu DB -->
                            <?php
 						  // 	include_once("database.php");
-		  				   	$result = pg_query($conn, "SELECT * FROM public.product where Cat_ID='C003'" );
+		  				   	$result = pg_query($conn, "SELECT * FROM public.product where cat_id='C003'" );
 			
 			                if (!$result) { //add this check.
                                 die('Invalid query: ' . pg_error($conn));

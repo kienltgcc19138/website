@@ -47,21 +47,21 @@ else
             if(isset($_GET["function"])=="del"){
                 if(isset($_GET["id"])){
                     $id=$_GET["id"];
-                    $sq="select Pro_image from public.product where Product_ID='$id'";
+                    $sq="select Pro_image from public.product where product_id='$id'";
                     $res=pg_query($conn,$sq);
-                    $row=pg_fetch_array($res,MYSQLI_ASSOC);
-                    $filePic=$row['Pro_image'];
+                    $row=pg_fetch_array($res, NULL, PGSQL_ASSOC);
+                    $filePic=$row['pro_image'];
                     unlink("images/".$filePic);
-                    pg_query($conn,"delete from public.product where Product_ID='$id'");
+                    pg_query($conn,"delete from public.product where product_id='$id'");
                 }
             }
             ?>
             
             <?php
 			$No=1;
-            $result=pg_query($conn,"Select Product_ID, Product_Name, Price, Pro_qty,Pro_image,Cat_Name from public.product a, public.category b
-            where a.Cat_ID=b.Cat_ID Order by ProDate DESC");
-            while($row=pg_fetch_array($result,MYSQLI_ASSOC)){	
+            $result=pg_query($conn,"Select product_id, product_name, price, pro_qty,pro_image,cat_name from public.product a, public.category b
+            where a.cat_id=b.cat_id Order by ProDate DESC");
+            while($row=pg_fetch_array($result,NULL, PGSQL_ASSOC)){	
 			?>
 			<tr>
               <td ><?php echo $No; ?></td>

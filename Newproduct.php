@@ -10,14 +10,14 @@
                         <!--Load san pham tu DB -->
                            <?php
 						  // 	include_once("database.php");
-		  				   	$result = pg_query($conn, "SELECT * FROM public.product where Cat_ID='C004'" );
+		  				   	$result = pg_query($conn, "SELECT * FROM public.product where cat_id='C004'" );
 			
 			                if (!$result) { //add this check.
                                 die('Invalid query: ' . pg_error($conn));
                             }
 		
 			            
-			                while($row = pg_fetch_array($result, MYSQLI_ASSOC)){
+			                while($row = pg_fetch_array($result,NULL, PGSQL_ASSOC)){
 				            ?>
 				            <!--Một sản phẩm -->
                             <div class="single-product">

@@ -3,7 +3,7 @@
 $query = "select CustName, Address, email, telephone from public.customer
 			where Username = '" . $_SESSION["us"] . "'";
 $result =pg_query($conn, $query) or die(pg_error($conn));
-$row = pg_fetch_array($result, MYSQLI_ASSOC);
+$row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
 $us = $_SESSION["us"];
 $email = $row["email"];
@@ -23,14 +23,14 @@ if(isset($_POST['btnUpdate'])){
 		if($_POST['txtPass1']!=""){
 			$pass = md5($_POST['txtPass1']);
 
-			$sq = "Update customer set CustName='$fullname', Address = '$address',
-			telephone='$telephone', Password='$pass' where Username='".$_SESSION['us']. "'";
+			$sq = "Update customer set custname='$fullname', address = '$address',
+			telephone='$telephone', password='$pass' where username='".$_SESSION['us']. "'";
 
 			pg_query($conn, $sq) or die(pg_error($conn));
 		}
 		else{
-			$sq = "Update customer set CustName='$fullname', Address = '$address',
-			telephone='$telephone', Password='$pass' where Username='".$_SESSION['us']. "'";
+			$sq = "Update customer set custname='$fullname', address = '$address',
+			telephone='$telephone', password='$pass' where username='".$_SESSION['us']. "'";
 
 			pg_query($conn, $sq) or die(pg_error($conn));
 		}
