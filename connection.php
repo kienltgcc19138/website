@@ -1,7 +1,7 @@
 
 <?php
-    //$connection = pg_connect("postgres://zxncynmjahuphs:18d12fd2c6fb1baa0ab3cbcbae4c532be55e9550256254afa1bfaf13103b50e9@ec2-34-233-64-238.compute-1.amazonaws.com:5432/d97l7f93co7ukk");
-    $conn = pg_connect("host=localhost port=5432 dbname=postgres user=postgres password=322001");
+    $conn = pg_connect("postgres://enesxkbnipglfn:ab5ea2e4b66767be64939974975f8a8e408c547b2d474887e57875666e04a13f@ec2-3-220-90-40.compute-1.amazonaws.com:5432/d5kcq00ts60umq");
+    //$conn = pg_connect("host=localhost port=5432 dbname=postgres user=postgres password=322001");
     if(!$conn){
         die("Can not connect database");
     } 
