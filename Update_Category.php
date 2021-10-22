@@ -9,9 +9,9 @@
 			$id = $_GET["id"];
 			$result = pg_query($conn, "Select * from public.category where cat_id='$id'");
 			$row = pg_fetch_array($result, MYSQLI_ASSOC);
-			$cat_id = $row['Cat_ID'];
-			$cat_name = $row['Cat_Name'];
-			$cat_des = $row['Cat_Des'];
+			$cat_id = $row['cat_id'];
+			$cat_name = $row['cat_name'];
+			$cat_des = $row['cat_des'];
 			
 	?>
 	

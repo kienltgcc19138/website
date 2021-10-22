@@ -47,7 +47,7 @@ else
             if(isset($_GET["function"])=="del"){
                 if(isset($_GET["id"])){
                     $id=$_GET["id"];
-                    $sq="select Pro_image from public.product where product_id='$id'";
+                    $sq="select pro_image from public.product where product_id='$id'";
                     $res=pg_query($conn,$sq);
                     $row=pg_fetch_array($res, NULL, PGSQL_ASSOC);
                     $filePic=$row['pro_image'];
@@ -60,20 +60,20 @@ else
             <?php
 			$No=1;
             $result=pg_query($conn,"Select product_id, product_name, price, pro_qty,pro_image,cat_name from public.product a, public.category b
-            where a.cat_id=b.cat_id Order by ProDate DESC");
+            where a.cat_id=b.cat_id Order by prodate DESC");
             while($row=pg_fetch_array($result,NULL, PGSQL_ASSOC)){	
 			?>
 			<tr>
               <td ><?php echo $No; ?></td>
-              <td ><?php echo $row["Product_ID"];  ?></td>
-              <td><?php echo $row["Product_Name"];  ?></td>
-              <td><?php echo $row["Price"];   ?></td>
-              <td ><?php echo $row["Pro_qty"]; ?></td>
-              <td><?php echo $row["Cat_Name"]; ?></td>
+              <td ><?php echo $row["product_id"];  ?></td>
+              <td><?php echo $row["product_name"];  ?></td>
+              <td><?php echo $row["price"];   ?></td>
+              <td ><?php echo $row["pro_qty"]; ?></td>
+              <td><?php echo $row["cat_name"]; ?></td>
              <td align='center' class='cotNutChucNang'>
-                 <img src='images/<?php echo $row['Pro_image'] ?>' border='0' width="50" height="50"  /></td>
-             <td align='center' class='cotNutChucNang'><a href="?page=update_product&&id=<?php echo $row["Product_ID"];?>"><img src='images/edit.png' border='0'/></a></td>
-             <td align='center' class='cotNutChucNang'><a href="?page=product_management&&function=del&&id=<?php echo $row["Product_ID"];?>"onclick="return deleteConfirm()"><img src='images/delete.png' border='0' /></a></td>
+                 <img src='images/<?php echo $row['pro_image'] ?>' border='0' width="50" height="50"  /></td>
+             <td align='center' class='cotNutChucNang'><a href="?page=update_product&&id=<?php echo $row["product_id"];?>"><img src='images/edit.png' border='0'/></a></td>
+             <td align='center' class='cotNutChucNang'><a href="?page=product_management&&function=del&&id=<?php echo $row["product_id"];?>"onclick="return deleteConfirm()"><img src='images/delete.png' border='0' /></a></td>
             </tr>
             <?php
                $No++;

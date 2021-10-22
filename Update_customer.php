@@ -7,8 +7,8 @@ $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
 $us = $_SESSION["us"];
 $email = $row["email"];
-$fullname = $row["CustName"];
-$address = $row["Address"];
+$fullname = $row["custname"];
+$address = $row["address"];
 $telephone = $row["telephone"];
 
 //Update information when the user presses the "Update" button
