@@ -61,7 +61,7 @@ include_once("connection.php");
                             }
 		
 			            
-			                while($row = pg_fetch_array($result, MYSQLI_ASSOC)){
+			                while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
 				            ?>
 				            <!--Một sản phẩm -->
                             <div class="single-product">
@@ -162,7 +162,7 @@ include_once("connection.php");
                             }
 		
 			            
-			                while($row = pg_fetch_array($result, MYSQLI_ASSOC)){
+			                while($row = pg_fetch_array($result,NULL, PGSQL_ASSOC)){
 				            ?>
                         <div class="single-wid-product">
                             <a href="?page=cart"><img src="images/<?php echo $row['pro_image']?>" alt="" class="product-thumb"></a>
